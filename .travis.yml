@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "0.12.7"
-scripts:
-  - gulp test
+before_script:
+  - npm install -g gulp
+script: gulp test
 
