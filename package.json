@@ -16,7 +16,7 @@
     "gulp-if": "^1.2.5",
     "gulp-jscs": "^2.0.0",
     "gulp-jshint": "^1.11.2",
-    "gulp-karma": "^0.0.4",
+    "gulp-karma": "0.0.4",
     "gulp-notify": "~2.2.0",
     "gulp-nunjucks-render": "^0.2.1",
     "gulp-plumber": "~1.0.1",
