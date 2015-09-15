@@ -1,0 +1,30 @@
+@import 'sprites';
+@import 'partials/icons';
+@import 'partials/colors';
+
+@import 'susy/sass/susy';
+
+$darkred: black;
+
+.susy-test {
+  @include span(2);
+}
+
+* {
+    color: $darkred;
+}
+
+.flex {
+    display: flex;
+}
+
+a {
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.border-radius {
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+}
+

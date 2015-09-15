@@ -1,0 +1,9 @@
+{% extends 'layout.nunjucks' %}
+
+{% block content %}
+<h1>An introduction to Nunjucks (Part I)</h1>
+
+    <footer>
+    {% include "partials/navigation.nunjucks" %}
+    </footer>
+{% endblock %}

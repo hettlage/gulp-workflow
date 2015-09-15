@@ -1,0 +1,19 @@
+{
+  "name": "watching",
+  "version": "0.0.0",
+  "authors": [
+    "Christian Hettlage <hettlage@saao.ac.za>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "susy": "~2.2.6"
+  }
+}

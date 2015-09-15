@@ -1,0 +1,16 @@
+{
+  "links": [
+    {
+      "href": "http://www.saao.ac.za",
+      "text": "South African Astronomical Observatory"
+    },
+    {
+      "href": "http://www.wikipedia.org",
+      "text": "Wikipedia"
+    },
+    {
+      "href": "http://www.tagesschau.de",
+      "text": "Tagesschau"
+    }
+  ]
+}

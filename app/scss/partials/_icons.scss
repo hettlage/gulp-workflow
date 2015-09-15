@@ -1,0 +1,7 @@
+.icon {
+  width: 32px;
+  height: 32px;
+  background-image: url('../images/sprites.png');
+}
+
+@include sprites($spritesheet-sprites);

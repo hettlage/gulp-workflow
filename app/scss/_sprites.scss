@@ -1,0 +1,114 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$camera-name: 'camera';
+$camera-x: 0px;
+$camera-y: 0px;
+$camera-offset-x: 0px;
+$camera-offset-y: 0px;
+$camera-width: 32px;
+$camera-height: 32px;
+$camera-total-width: 64px;
+$camera-total-height: 64px;
+$camera-image: '../images/sprites.png';
+$camera: (0px, 0px, 0px, 0px, 32px, 32px, 64px, 64px, '../images/sprites.png', 'camera', );
+$contract-name: 'contract';
+$contract-x: 32px;
+$contract-y: 0px;
+$contract-offset-x: -32px;
+$contract-offset-y: 0px;
+$contract-width: 32px;
+$contract-height: 32px;
+$contract-total-width: 64px;
+$contract-total-height: 64px;
+$contract-image: '../images/sprites.png';
+$contract: (32px, 0px, -32px, 0px, 32px, 32px, 64px, 64px, '../images/sprites.png', 'contract', );
+$gear-name: 'gear';
+$gear-x: 0px;
+$gear-y: 32px;
+$gear-offset-x: 0px;
+$gear-offset-y: -32px;
+$gear-width: 32px;
+$gear-height: 32px;
+$gear-total-width: 64px;
+$gear-total-height: 64px;
+$gear-image: '../images/sprites.png';
+$gear: (0px, 32px, 0px, -32px, 32px, 32px, 64px, 64px, '../images/sprites.png', 'gear', );
+$magnifying-glass-name: 'magnifying-glass';
+$magnifying-glass-x: 32px;
+$magnifying-glass-y: 32px;
+$magnifying-glass-offset-x: -32px;
+$magnifying-glass-offset-y: -32px;
+$magnifying-glass-width: 32px;
+$magnifying-glass-height: 32px;
+$magnifying-glass-total-width: 64px;
+$magnifying-glass-total-height: 64px;
+$magnifying-glass-image: '../images/sprites.png';
+$magnifying-glass: (32px, 32px, -32px, -32px, 32px, 32px, 64px, 64px, '../images/sprites.png', 'magnifying-glass', );
+$spritesheet-width: 64px;
+$spritesheet-height: 64px;
+$spritesheet-image: '../images/sprites.png';
+$spritesheet-sprites: ($camera, $contract, $gear, $magnifying-glass, );
+$spritesheet: (64px, 64px, '../images/sprites.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
