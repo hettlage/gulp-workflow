@@ -4,7 +4,7 @@ describe('Add', function() {
 
         expect(add(3, 6)).toBe(9);
 
-        expect(add(1, -1)).toBe(0);
+        expect(add(1, -1)).toBe(8);
 
         console.log($.each);
     })
