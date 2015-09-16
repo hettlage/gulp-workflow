@@ -4,6 +4,8 @@ describe('Add', function() {
 
         expect(add(3, 6)).toBe(9);
 
+        expect(add(1, -1)).toBe(0);
+
         var jq = $;
     })
 });
