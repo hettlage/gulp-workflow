@@ -17,13 +17,23 @@ var jsHint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var scssLint = require('gulp-scss-lint');
 var Server = require('karma').Server;
+var gulpUtil = require('gulp-util');
 
 var customPlumber = function(errTitle) {
-	return plumber({errorHandler: notify.onError({
-		title: errTitle || "error running Gulp",
-		error: "Error: <% error.message %>",
-		sound: "Submarine"
-	})});
+    if (process.env.CI) {
+        return plumber({errorHandler: function(err) {
+            throw new Error(gulpUtil.colors.red(err.message));
+        }})
+    }
+    else {
+        return plumber({
+            errorHandler: notify.onError({
+                title: errTitle || "error running Gulp",
+                error: "Error: <% error.message %>",
+                sound: "Submarine"
+            })
+        });
+    }
 };
 
 gulp.task('browserSync', function() {
@@ -104,11 +114,11 @@ gulp.task('lint:js', function() {
                                 fix: true,
                                 configPath: '.jscsrc'
                              }))
-            .pipe(gulp.dest('app/js'))
-            .pipe(jsHint.reporter('fail', {
-                                ignoreWarning: true,
-                                ignoreInfo: true
-                             }));
+            .pipe(gulp.dest('app/js'));
+            //.pipe(jsHint.reporter('fail', {
+            //                    ignoreWarning: true,
+            //                    ignoreInfo: true
+            //                 }));
 });
 
 gulp.task('lint:scss', function() {
