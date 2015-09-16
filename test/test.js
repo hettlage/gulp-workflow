@@ -6,6 +6,6 @@ describe('Add', function() {
 
         expect(add(1, -1)).toBe(0);
 
-        var jq = $;
+        console.log($.each);
     })
 });
